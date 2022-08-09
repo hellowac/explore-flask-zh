@@ -1,0 +1,893 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>部署 - 《explore flask》中文翻译</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="《explore flask》中文翻译" class="md-header__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            《explore flask》中文翻译
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              部署
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="《explore flask》中文翻译" class="md-nav__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    《explore flask》中文翻译
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cover/" class="md-nav__link">
+        封面
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-introduction/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-coding_conventions/" class="md-nav__link">
+        代码约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-environment/" class="md-nav__link">
+        环境
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-organizing_your_project/" class="md-nav__link">
+        组织你的项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-configuration/" class="md-nav__link">
+        配置
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-advanced_patterns_for_views_and_routing/" class="md-nav__link">
+        关于视图和路由的进阶技巧
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-blueprints/" class="md-nav__link">
+        蓝图
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-templates/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-static_files/" class="md-nav__link">
+        静态文件
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-storing-data/" class="md-nav__link">
+        存储
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-handling_forms/" class="md-nav__link">
+        处理表单
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-handling_users/" class="md-nav__link">
+        用户管理的规范
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          部署
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        部署
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    托管主机
+  </a>
+  
+    <nav class="md-nav" aria-label="托管主机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-web-services-ec2" class="md-nav__link">
+    Amazon Web Services EC2（因为国情问题，让我们直接看下一个吧）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heroku" class="md-nav__link">
+    Heroku
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digital-ocean" class="md-nav__link">
+    Digital Ocean
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    部署工具
+  </a>
+  
+    <nav class="md-nav" aria-label="部署工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    应用容器
+  </a>
+  
+    <nav class="md-nav" aria-label="应用容器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gunicorn" class="md-nav__link">
+    将 Gunicorn 摆上前台
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    Nginx 反向代理
+  </a>
+  
+    <nav class="md-nav" aria-label="Nginx 反向代理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxyfix" class="md-nav__link">
+    ProxyFix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-conclusion/" class="md-nav__link">
+        结语
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    托管主机
+  </a>
+  
+    <nav class="md-nav" aria-label="托管主机">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-web-services-ec2" class="md-nav__link">
+    Amazon Web Services EC2（因为国情问题，让我们直接看下一个吧）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heroku" class="md-nav__link">
+    Heroku
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digital-ocean" class="md-nav__link">
+    Digital Ocean
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    部署工具
+  </a>
+  
+    <nav class="md-nav" aria-label="部署工具">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    应用容器
+  </a>
+  
+    <nav class="md-nav" aria-label="应用容器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gunicorn" class="md-nav__link">
+    将 Gunicorn 摆上前台
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    Nginx 反向代理
+  </a>
+  
+    <nav class="md-nav" aria-label="Nginx 反向代理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxyfix" class="md-nav__link">
+    ProxyFix
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><img alt="部署" src="../images/deployment.png" /></p>
+<p>原文: <a href="http://exploreflask.com/en/latest/deployment.html">http://exploreflask.com/en/latest/deployment.html</a></p>
+<h1 id="_1">部署</h1>
+<p>最终，你终于可以向全世界展示你的应用了。是时候部署它了。这个过程总能让人感到受挫，因为有太多任务需要完成。同时在部署的过程中你需要做出太多艰难的决定。我们会谈论一些关键的地方以及我们一些可能的选择。</p>
+<h2 id="_2">托管主机</h2>
+<p>首先，你需要一个服务器。世上服务器提供商成千，但我只取三家。我不会谈论如何开始使用它们的服务的细节，因为这超出本书的范围。相反，我只会谈论它们作为 Flask 应用托管商上的优点。</p>
+<h3 id="amazon-web-services-ec2">Amazon Web Services EC2（因为国情问题，让我们直接看下一个吧）</h3>
+<p>Amazon Web Services 指的是一套相关的服务，提供商是……~~卓越~~ 亚马逊！今日，许多著名的初创公司选择使用它，所以你或许已经听过它的大名。AWS 服务中我们最关心的是 EC2，全称是 Elastic Compute Cloud。EC2 的最大的卖点是你能够获得虚拟主机，或者说实例（这是 AWS 官方称呼），在仅仅几秒之内。如果你需要快速拓展你的应用，就只需启动多一点 EC2 实例给你的应用，并且用一个负载平衡器(load balancer)管理它们。（这时还可以试试 AWS Elastic Load Balancer）</p>
+<p>对于 Flask 而言，AWS 就是一个常规的虚拟主机。付上一些费用，你可以用你喜欢的 Linux 发行版启动它，并安上你的 Flask 应用。之后你的服务器就起来了。不过它意味着你需要一些系统管理知识。</p>
+<h3 id="heroku">Heroku</h3>
+<p>Heroku 是一个应用托管网站，基于诸如 EC2 的 AWS 的服务。他们允许你获得 EC2 的便利，而无需系统管理经验。</p>
+<p>对于 Heroku，你通过 <code>git push</code> 来在它们的服务器上部署代码。这是非常便利的，如果你不想浪费时间 ssh 到服务器上，安装并配置软件，继续整个常规的部署流程。这种便利是需要花钱购买的，尽管 AWS 和 Heroku 都提供了一定量的免费服务。</p>
+<blockquote>
+<p><strong>参见</strong>
+Heroku有一个如何在它们的服务器上部署Flask应用的教程：
+<a href="https://devcenter.heroku.com/articles/getting-started-with-python">https://devcenter.heroku.com/articles/getting-started-with-python</a></p>
+<p><strong>注意</strong>
+管理你自己的数据库将会花上许多时间，而把它做好也需要一些经验。通过配置你自己的站点来学习数据库管理是好的，但有时候你会想要外包给专业团队来省下时间和精力。Heroku和AWS都提供有数据库管理服务。我个人还没试过，但听说它们不错。如果你想要保障数据安全以及备份，却又不想要自己动手，值得考虑一下它们。</p>
+<ul>
+<li>Heroku Postgres: <a href="https://www.heroku.com/postgres">https://www.heroku.com/postgres</a></li>
+<li>Amazon RDS: <a href="https://aws.amazon.com/rds/">https://aws.amazon.com/rds/</a></li>
+</ul>
+</blockquote>
+<h3 id="digital-ocean">Digital Ocean</h3>
+<p>Digital Ocean 是最近出现的 EC2 的竞争对手。一如 EC2，Digital Ocean 允许你快速地启动虚拟主机（在这里叫 droplet）。所有的 droplet 都运行在 SSD 上，而在 EC2，如果你用的是普通服务，你是享受不到这种待遇的。对我而言，最大的卖点是它提供的控制接口比 AWS 控制面板简单和容易多了。Digital Ocean 是我个人的最爱，我建议你考虑下它。</p>
+<p>在 Digital Ocean，Flask 应用部署方式就跟在 EC2 一样。你会得到一个全新的 Linux 发行版，然后需要安装你的全套软件。</p>
+<h2 id="_3">部署工具</h2>
+<p>这一节将包括一些为了向别人提供服务，你需要安装在服务器上的软件。最基本的是一个前置服务器，用来反向代理请求给一个运行你的 Flask 应用的应用容器。你通常也需要一个数据库，所以我们也会略微谈论下这方面的内容。</p>
+<h3 id="_4">应用容器</h3>
+<p>在开发应用时，本地运行的那个服务器并不能处理真实的请求。当你真的需要向公众发布你的应用，你需要在应用容器，例如 Gunicorn，上运行它。Gunicorn 接待请求，并处理诸如线程的复杂事务。</p>
+<p>要想使用 Gunicorn，需要通过 pip 安装 <code>gunicorn</code> 到你的虚拟环境中。运行你的应用只需简单的命令。为了简明起见，让我们假设这就是我们的 Flask 应用：</p>
+<p><em>rocket.py</em></p>
+<pre><code class="language-python">from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+ return &quot;Hello World!&quot;
+</code></pre>
+<p>哦，这真简明扼要。现在，使用 Gunicorn 来运行它吧，我们只需执行这个命令：</p>
+<pre><code>(ourapp)$ gunicorn rocket:app
+2014-03-19 16:28:54 [62924] [INFO] Starting gunicorn 18.0
+2014-03-19 16:28:54 [62924] [INFO] Listening at: http://127.0.0.1:8000 (62924)
+2014-03-19 16:28:54 [62924] [INFO] Using worker: sync
+2014-03-19 16:28:54 [62927] [INFO] Booting worker with pid: 62927
+</code></pre>
+<p>你应该能在 <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> 看到“Hello World!”。</p>
+<p>为了在后台运行这个服务器（也即使它变成守护进程），我们可以传递 <code>-D</code> 选项给 Gunicorn。这下它会持续运行，即使你关闭了当前的终端会话。</p>
+<p>如果我们这么做了，当我们想要关闭服务器时就会困惑于到底应该关闭哪个进程。我们可以让 Gunicorn 把进程 ID 储存到文件中，这样如果想要停止或者重启服务器时，我们可以不用在一大串运行中的进程中搜索它。我们使用 <code>-p &lt;file&gt;</code> 选项来这么做。现在，我们的 Gunicorn 部署命令是这样：</p>
+<pre><code>(ourapp)$ gunicorn rocket:app -p rocket.pid -D
+(ourapp)$ cat rocket.pid
+63101
+</code></pre>
+<p>要想重新启动或者关闭服务器，我们可以运行对应的命令：</p>
+<pre><code>(ourapp)$ kill -HUP `cat rocket.pid` # 发送一个SIGHUP信号，终止进程
+(ourapp)$ kill `cat rocket.pid`
+</code></pre>
+<p>默认下 Gunicorn 会运行在 8000 端口。如果这已经被另外的应用占用了，你可以通过添加 <code>-b</code> 选项来指定端口。</p>
+<pre><code>(ourapp)$ gunicorn rocket:app -p rocket.pid -b 127.0.0.1:7999 -D
+</code></pre>
+<h4 id="gunicorn">将 Gunicorn 摆上前台</h4>
+<blockquote>
+<p><strong>注意</strong>
+Gunicorn应该隐藏于反向代理之后。如果你直接让它监听来自外网的请求，它很容易成为拒绝服务攻击的目标。它不应该接受这样的考验。只有在debug的情况下你才能把Gunicorn摆上前台，而且完工之后，切记把它重新隐藏到幕后。 }</p>
+</blockquote>
+<p>如果你像前面说的那样在服务器上运行 Gunicorn，将不能从本地系统中访问到它。这是因为默认情况下 Gunicorn 绑定在 127.0.0.1。这意味着它仅仅监听来自服务器自身的连接。所以通常使用一个反向代理来作为外网和 Gunicorn 服务器的中介。不过，假如为了 debug，你需要直接从外网发送请求给 Gunicorn，可以告诉 Gunicorn 绑定 0.0.0.0。这样它就会监听所有请求。</p>
+<pre><code>(ourapp)$ gunicorn rocket:app -p rocket.pid -b 0.0.0.0:8000 -D
+</code></pre>
+<blockquote>
+<p><strong>注意</strong></p>
+<ul>
+<li>从文档中可以读到更多关于运行和部署Gunicorn的信息 : <a href="http://docs.gunicorn.org/en/latest/">http://docs.gunicorn.org/en/latest/</a></li>
+<li>Fabric是一个可以允许你不通过SSH连接到每个服务器上就可以执行部署和管理命令的工具 : <a href="http://docs.fabfile.org/en/latest">http://docs.fabfile.org/en/latest</a></li>
+</ul>
+</blockquote>
+<h3 id="nginx">Nginx 反向代理</h3>
+<p>反向代理处理公共的 HTTP 请求，发送给 Gunicorn 并将响应带回给发送请求的客户端。Nginx 是一个优秀的客户端，更何况 Gunicorn 强烈建议我们使用它。</p>
+<p>要想配置 Nginx 作为运行在 127.0.0.1:8000 的 Gunicorn 的反向代理，我们可以在 <em>/etc/nginx/sites-available</em> 下给应用创建一个文件。不如称之为 <em>exploreflask.com</em> 吧。</p>
+<p><em>/etc/nginx/sites-available/exploreflask.com</em></p>
+<pre><code># Redirect www.exploreflask.com to exploreflask.com
+server {
+        server_name www.exploreflask.com;
+        rewrite ^ http://exploreflask.com/ permanent;
+}
+
+# Handle requests to exploreflask.com on port 80
+server {
+        listen 80;
+        server_name exploreflask.com;
+
+  # Handle all locations
+        location / {
+          # Pass the request to Gunicorn
+                proxy_pass http://127.0.0.1:8000;
+
+                # Set some HTTP headers so that our app knows where the request really came from
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+}
+</code></pre>
+<p>现在在 <em>/etc/nginx/sites-enabled</em> 下创建该文件的符号链接，接着重启 Nginx。</p>
+<pre><code>$ sudo ln -s \
+/etc/nginx/sites-available/exploreflask.com \
+/etc/nginx/sites-enabled/exploreflask.com
+</code></pre>
+<p>你现在应该可以发送请求给 Nginx 然后收到来自应用的响应。</p>
+<blockquote>
+<p><strong>参见</strong>
+Gunicorn文档中关于配置Nginx的部分会给你更多启动Nginx的信息:
+<a href="http://docs.gunicorn.org/en/latest/deploy.html#nginx-configuration">http://docs.gunicorn.org/en/latest/deploy.html#nginx-configuration</a></p>
+</blockquote>
+<h4 id="proxyfix">ProxyFix</h4>
+<p>有时，你会遇到 Flask 不能恰当处理转发的请求的情况。这也许是因为在 Nginx 中设置的某些 HTTP 报文头部造成的。我们可以使用 Werkzeug 的 ProxyFix 来 fix 转发请求。</p>
+<p><em>app.py</em></p>
+<pre><code class="language-python">from flask import Flask
+
+# Import the fixer
+from werkzeug.contrib.fixers import ProxyFix
+
+app = Flask(__name__)
+
+# Use the fixer
+app.wsgi_app = ProxyFix(app.wsgi_app)
+
+@app.route('/')
+def index():
+ return &quot;Hello World!&quot;
+</code></pre>
+<blockquote>
+<p><strong>参见</strong>
+在Werkzeug文档中可以读到更多关于ProxyFix的信息:
+<a href="http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.contrib.fixers.ProxyFix">http://werkzeug.pocoo.org/docs/contrib/fixers/#werkzeug.contrib.fixers.ProxyFix</a></p>
+</blockquote>
+<h2 id="_5">总结</h2>
+<ul>
+<li>你可以把 Flask 应用托管到 AWS EC2，Heroku 和 Digital Ocean。（译者注：建议托管到国内的云平台上）</li>
+<li>Flask 应用的基本部署依赖包括一个应用容器（比如 Gunicorn）和一个反向代理（比如 Nginx）。</li>
+<li>Gunicorn 应该退居 Nginx 幕后并监听 127.0.0.1（内部请求）而非 0.0.0.0（外部请求）</li>
+<li>使用 Werkzeug 的 ProxyFix 来处理 Flask 应用遇到的特定的转发报文头部。</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../12-handling_users/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 用户管理的规范" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              用户管理的规范
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../14-conclusion/" class="md-footer__link md-footer__link--next" aria-label="下一页: 结语" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              结语
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

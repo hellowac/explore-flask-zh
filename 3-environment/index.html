@@ -1,0 +1,887 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>环境 - 《explore flask》中文翻译</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="《explore flask》中文翻译" class="md-header__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            《explore flask》中文翻译
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              环境
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="《explore flask》中文翻译" class="md-nav__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    《explore flask》中文翻译
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cover/" class="md-nav__link">
+        封面
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-introduction/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-coding_conventions/" class="md-nav__link">
+        代码约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          环境
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        环境
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#virtualenv" class="md-nav__link">
+    使用 virtualenv 来管理环境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtualenvwrapper-virtual-environment" class="md-nav__link">
+    使用 virtualenvwrapper 管理你的 virtual environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    记录依赖变动
+  </a>
+  
+    <nav class="md-nav" aria-label="记录依赖变动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pip-freeze" class="md-nav__link">
+    pip freeze
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    手动记录依赖变动
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    版本控制
+  </a>
+  
+    <nav class="md-nav" aria-label="版本控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    什么不应该在版本控制里
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    调试
+  </a>
+  
+    <nav class="md-nav" aria-label="调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    调试模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flask-debugtoolbar" class="md-nav__link">
+    Flask-DebugToolbar
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-organizing_your_project/" class="md-nav__link">
+        组织你的项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-configuration/" class="md-nav__link">
+        配置
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-advanced_patterns_for_views_and_routing/" class="md-nav__link">
+        关于视图和路由的进阶技巧
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-blueprints/" class="md-nav__link">
+        蓝图
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-templates/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-static_files/" class="md-nav__link">
+        静态文件
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-storing-data/" class="md-nav__link">
+        存储
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-handling_forms/" class="md-nav__link">
+        处理表单
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-handling_users/" class="md-nav__link">
+        用户管理的规范
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-deployment/" class="md-nav__link">
+        部署
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-conclusion/" class="md-nav__link">
+        结语
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#virtualenv" class="md-nav__link">
+    使用 virtualenv 来管理环境
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#virtualenvwrapper-virtual-environment" class="md-nav__link">
+    使用 virtualenvwrapper 管理你的 virtual environment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    记录依赖变动
+  </a>
+  
+    <nav class="md-nav" aria-label="记录依赖变动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pip-freeze" class="md-nav__link">
+    pip freeze
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    手动记录依赖变动
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    版本控制
+  </a>
+  
+    <nav class="md-nav" aria-label="版本控制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    什么不应该在版本控制里
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    调试
+  </a>
+  
+    <nav class="md-nav" aria-label="调试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    调试模式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flask-debugtoolbar" class="md-nav__link">
+    Flask-DebugToolbar
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><img alt="环境" src="../images/environment.png" /></p>
+<p>原文: <a href="http://exploreflask.com/en/latest/environment.html">http://exploreflask.com/en/latest/environment.html</a></p>
+<h1 id="_1">环境</h1>
+<p>为了正确地跑起来，你的应用需要依赖许多不同的软件。
+就算是再怎么否认这一点的人，也无法否认至少需要依赖 Flask 本身。
+你的应用的 <strong>运行环境</strong>，在当你想要让它跑起来时，是至关重要的。
+幸运的是，我们有许多工具可以减低管理环境的复杂度。</p>
+<h2 id="virtualenv">使用 virtualenv 来管理环境</h2>
+<p><a href="http://www.virtualenv.org/en/latest/">virtualenv</a>是一个能把你的应用隔离在一个 <strong>虚拟环境</strong> 中的工具。
+一个虚拟环境是一个包含了你的应用依赖的软件的文件夹。一个虚拟环境同时也封存了你在开发时的环境变量。
+与其把依赖包，比如 Flask，下载到你的系统包管理文件夹，或用户包管理文件夹，我们可以把它下载到对应当前应用的一个隔离的文件夹之下。
+这使得你可以指定一个特定的 Python 二进制版本，取决于当前开发的项目。</p>
+<p>virtualenv 也可以让你给不同的项目指定同样的依赖包的不同版本。
+当你在一个老旧的包含众多不同项目的平台上开发时，这种灵活性十分重要。</p>
+<p>用了 virtualenv，你将只会把少数几个 Python 模块安装到系统的全局空间中。其中一个会是 virtualenv 本身：</p>
+<pre><code class="language-sh"># 使用pip安装virtualenv
+$ pip install virtualenv
+</code></pre>
+<p>安装完 virtualenv，就可以开始创建虚拟环境。切换到你的项目文件夹，运行 <code>virtualenv</code> 命令。这个命令接受一个参数，作为虚拟环境的名字（同样也是它的位置，在当前文件夹 <code>ls</code> 下你就知道了）。</p>
+<pre><code class="language-sh">$ virtualenv venv
+New python executable in venv/bin/python
+Installing setuptools, pip...done.
+</code></pre>
+<p>这将创建一个包含所有依赖的文件夹。</p>
+<p>一旦新的 virtual environment 已经准备就绪，你需要给对应的 virtual environment 下的 <code>bin/activate</code> 脚本执行 <code>source</code>，来激活它。</p>
+<pre><code>source venv/bin/activate
+</code></pre>
+<p>你可以通过运行 <code>which python</code> 看到：<code>python</code> 现在指向的是 virtual environment 中的二进制版本。</p>
+<pre><code class="language-sh">$ which python
+/usr/local/bin/python
+$ source venv/bin/activate
+(venv)$ which python
+/Users/robert/Code/myapp/venv/bin/python
+</code></pre>
+<p>当一个 virtual environment 被激活了，依赖包会被 pip 安装到 virtual environment 中而不是全局系统环境。</p>
+<p>你也许注意到了，你的 shell 提示符发生了改变。
+virtualenv 在它前面添加了当前被激活的 virtual environment，所以你能意识到你并不存在于全局系统环境中。</p>
+<p>运行 <code>deactivate</code> 命令，你就能离开你的 virtual environment。</p>
+<pre><code>(venv)$ deactivate
+$
+</code></pre>
+<h2 id="virtualenvwrapper-virtual-environment">使用 virtualenvwrapper 管理你的 virtual environment</h2>
+<p>我想要让你了解到<a href="http://virtualenvwrapper.readthedocs.org/en/latest/">virtualenvwrapper</a>对于前面的工作做了什么改进，这样你就知道为什么你应该使用它。</p>
+<p>虚拟环境文件夹现在已经位于你的项目文件夹之下。
+但是你仅仅是在激活了虚拟环境后才会跟它交互。它甚至不应该被放入版本控制中。所以它呆在项目文件夹中也是挺碍眼的。
+解决这个问题的一个方法就是使用 virtualenvwrapper。这个包把你所有的 virtual environment 整理到单独的文件夹下，通常是 <code>~/.virtualenvs/</code>。</p>
+<p>要安装 virtualenvwrapper，遵循这个<a href="http://virtualenvwrapper.readthedocs.org/en/latest/">文档</a>中的步骤。</p>
+<blockquote>
+<p><strong>注意</strong>
+确保你在安装virtualenvwrapper时不在任何一个virtual environment中。你需要把它安装在全局空间，而不是一个已存在的virtual environment中</p>
+</blockquote>
+<p>现在，你不再需要运行 <code>virtualenv</code> 来创建一个环境，只需运行 <code>mkvirtualenv</code>：</p>
+<pre><code class="language-sh">$ mkvirtualenv rocket
+New python executable in rocket/bin/python
+Installing setuptools, pip...done.
+</code></pre>
+<p>在你的 virtual environment 目录之下，比如在 <code>~/.virtualenv</code> 之下，<code>mkvirtualenv</code> 创建了一个文件夹，并替你激活了它。
+就像普通的 <code>virtualenv</code>，<code>python</code> 和 <code>pip</code> 现在指向的是 virtual environment 而不是全局系统。
+为了激活想要的环境，运行这个命令：<code>workon [environment name]</code>，而 <code>deactivate</code> 依然会关闭环境。</p>
+<h2 id="_2">记录依赖变动</h2>
+<p>随着项目增长，你会发现它的依赖列表也一并随着增长。在你能运行一个 Flask 应用之前，即使已经需要数以十记的依赖包也毫不奇怪。
+管理依赖的最简单的方法就是使用一个简单的文本文件。
+pip 可以生成一个文本文件，列出所有已经安装的包。它也可以解析这个文件，并在新的系统（或者新的环境）下安装每一个包。</p>
+<h3 id="pip-freeze">pip freeze</h3>
+<p><strong>requirements.txt</strong> 是一个常常被许多 Flask 应用用于列出它所依赖的包的文本文件。它是通过 <code>pip freeze &gt; requirements.txt</code> 生成的。
+使用 <code>pip install -r requirements.txt</code>，你就能安装所有的包。</p>
+<blockquote>
+<p><strong>注意</strong>
+在freeze或install依赖包时，确保你正位于正确的virtual environment之中。</p>
+</blockquote>
+<h3 id="_3">手动记录依赖变动</h3>
+<p>随着项目增长，你可能会发现 <code>pip freeze</code> 中列出的每一个包并不再是运行应用所必须的了。
+也许有些包只是在开发时用得上。<code>pip freeze</code> 没有判断力；它只是列出了当前安装的所有的包。所以你只能手动记录依赖的变动了。
+你可以把运行应用所需的包和开发应用所需的包分别放入对应的 <em>require_run.txt</em> 和 <em>require_dev.txt</em>。</p>
+<h2 id="_4">版本控制</h2>
+<p>选择一个版本控制系统并使用它。
+我推荐 Git。如我所知，Git 是当下最大众的版本控制系统。
+在删除代码的时候无需担忧潜在的巨大灾难是无价的。
+你现在可以对过去那种把不要的代码注释掉的行为说拜拜了，因为你可以直接删掉它们，即使将来突然需要，也可以通过 <code>git revert</code> 来恢复。
+另外，你将会有整个项目的备份，存在 GitHub, Bitbucket 或你自己的 Git server。</p>
+<h3 id="_5">什么不应该在版本控制里</h3>
+<p>我通常不把一个文件放在版本控制里，如果它满足以下两个原因中的一个。</p>
+<ol>
+<li>它是不必要的</li>
+<li>它是不公开的。</li>
+</ol>
+<p>编译的产物，比如 <code>.pyc</code>，和 virtual environment（如果你因为某些原因没有使用 virtualenvwrapper）正是前者的例子。
+它们不需要加入到版本控制中，因为它们可以通过 <code>.py</code> 或 <code>requirements.txt</code> 生成出来。</p>
+<p>接口密钥（调用接口时必须传入的参数），应用密钥，以及数据库证书则是后者的例子。
+它们不应该在版本控制中，因为一旦泄密，将造成严重的安全隐患。</p>
+<blockquote>
+<p><strong>注意</strong>
+在做安全相关的决定时，我会假设稳定版本库将会在一定程度上被公开。这意味着要清除所有的隐私，并且永不假设一个安全漏洞不会被发现，
+因为“谁能想到他们会干出什么事情？”</p>
+</blockquote>
+<p>在使用 Git 时，你可以在版本库中创建一个特别的文件名为 <em>.gitignore</em>。
+在里面，能使用正则表达式来列出对应的文件。任何匹配的文件将被 Git 所忽略。
+我建议你至少在其中加入 <code>*.pyc</code> 和 <code>/instance</code>。instance 文件夹中存放着跟你的应用相关的不便公开的配置。</p>
+<pre><code>.gitignore:
+*.pyc
+instance/
+</code></pre>
+<blockquote>
+<p><strong>参见</strong></p>
+<ul>
+<li>在这里你可以了解什么是<em>.gitignore</em> : <a href="http://git-scm.com/docs/gitignore">http://git-scm.com/docs/gitignore</a></li>
+<li>Flask文档中对instance目录的一段介绍 : <a href="http://flask.pocoo.org/docs/config/#instance-folders">http://flask.pocoo.org/docs/config/#instance-folders</a></li>
+</ul>
+</blockquote>
+<h2 id="_6">调试</h2>
+<h3 id="_7">调试模式</h3>
+<p>Flask 有一个便利的特性叫做“debug mode”。在你的应用配置中设置 <code>debug = True</code> 就能启动它。
+当它被启动后，服务器会在代码变动之后重新加载，并且一旦发生错误，错误会打印成一个带交互式命令行的调用栈。</p>
+<blockquote>
+<p><strong>注意</strong>
+不要在生产环境中开启debug mode。交互式命令行运行任意的代码输入，如果是在运行中的网站上，这将导致安全上的灾难性后果。</p>
+<p><strong>另见</strong></p>
+<ul>
+<li>阅读一下quickstart页面的debug mode部分 : <a href="http://docs.jinkan.org/docs/flask/quickstart.html#debug-mode">http://docs.jinkan.org/docs/flask/quickstart.html#debug-mode</a></li>
+<li>这里有一些关于错误处理，日志记录和使用其他调试工具的信息 : <a href="http://docs.jinkan.org/docs/flask/errorhandling.html">http://docs.jinkan.org/docs/flask/errorhandling.html</a></li>
+</ul>
+</blockquote>
+<h3 id="flask-debugtoolbar">Flask-DebugToolbar</h3>
+<p><a href="http://flask-debugtoolbar.readthedocs.org/en/latest/">Flask-DebugToolbar</a> 是用来调试你的应用的另一个得力工具。在 debug mode 中，它在你的应用中添加了一个侧边条。
+这个侧边条会给你提供有关 SQL 查询，日志，版本，模板，配置和其他有趣的信息。</p>
+<h2 id="_8">总结</h2>
+<ul>
+<li>使用 virtualenv 来打包你的应用的依赖包。</li>
+<li>使用 virtualenvwrapper 来打包你的 virtual environment。</li>
+<li>使用一个或多个文本文件来记录依赖变化。</li>
+<li>使用一个版本控制系统。我推荐 Git。</li>
+<li>使用.gitignore 来排除不必要的或不能公开的东西混进版本控制。</li>
+<li>debug mode 会在开发时给你有关 bug 的信息。</li>
+<li>Flaks-DebugToolbar 拓展将给你有关 bug 更多的信息。</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../2-coding_conventions/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 代码约定" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              代码约定
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../4-organizing_your_project/" class="md-footer__link md-footer__link--next" aria-label="下一页: 组织你的项目" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              组织你的项目
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

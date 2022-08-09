@@ -1,0 +1,1235 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>蓝图 - 《explore flask》中文翻译</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="《explore flask》中文翻译" class="md-header__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            《explore flask》中文翻译
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              蓝图
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="《explore flask》中文翻译" class="md-nav__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    《explore flask》中文翻译
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cover/" class="md-nav__link">
+        封面
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-introduction/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-coding_conventions/" class="md-nav__link">
+        代码约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-environment/" class="md-nav__link">
+        环境
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-organizing_your_project/" class="md-nav__link">
+        组织你的项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-configuration/" class="md-nav__link">
+        配置
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-advanced_patterns_for_views_and_routing/" class="md-nav__link">
+        关于视图和路由的进阶技巧
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          蓝图
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        蓝图
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    什么是蓝图？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    我什么时候会用到蓝图？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    我要把它们放哪里？
+  </a>
+  
+    <nav class="md-nav" aria-label="我要把它们放哪里？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    功能式架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分区式架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    哪种更胜一筹？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    我该怎么使用它们？
+  </a>
+  
+    <nav class="md-nav" aria-label="我该怎么使用它们？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    基本用法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    使用一个动态的 URL 前缀
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    使用一个动态子域名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    使用蓝图重构小型应用
+  </a>
+  
+    <nav class="md-nav" aria-label="使用蓝图重构小型应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    Step 1：分区式还是功能式？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    Step 2：分而治之
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    Step 3：大扫除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    Step 4：蓝图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    Step 5：大功告成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-templates/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-static_files/" class="md-nav__link">
+        静态文件
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-storing-data/" class="md-nav__link">
+        存储
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-handling_forms/" class="md-nav__link">
+        处理表单
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-handling_users/" class="md-nav__link">
+        用户管理的规范
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-deployment/" class="md-nav__link">
+        部署
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-conclusion/" class="md-nav__link">
+        结语
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    什么是蓝图？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    我什么时候会用到蓝图？
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    我要把它们放哪里？
+  </a>
+  
+    <nav class="md-nav" aria-label="我要把它们放哪里？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    功能式架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    分区式架构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    哪种更胜一筹？
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    我该怎么使用它们？
+  </a>
+  
+    <nav class="md-nav" aria-label="我该怎么使用它们？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    基本用法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#url" class="md-nav__link">
+    使用一个动态的 URL 前缀
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    使用一个动态子域名
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    使用蓝图重构小型应用
+  </a>
+  
+    <nav class="md-nav" aria-label="使用蓝图重构小型应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    Step 1：分区式还是功能式？
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    Step 2：分而治之
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    Step 3：大扫除
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    Step 4：蓝图
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    Step 5：大功告成
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><img alt="蓝图" src="../images/blueprints.png" /></p>
+<p>原文: <a href="http://exploreflask.com/en/latest/blueprints.html">http://exploreflask.com/en/latest/blueprints.html</a>#</p>
+<h1 id="_1">蓝图</h1>
+<h2 id="_2">什么是蓝图？</h2>
+<p>一个蓝图定义了可用于单个应用的视图，模板，静态文件等等的集合。举个例子，想象一下我们有一个用于管理面板的蓝图。这个蓝图将定义像 <em>/admin/login</em> 和 <em>/admin/dashboard</em> 这样的路由的视图。它可能还包括所需的模板和静态文件。你可以把这个蓝图当做你的应用的管理面板，管它是宇航员的交友网站，还是火箭推销员的 CRM 系统。</p>
+<h2 id="_3">我什么时候会用到蓝图？</h2>
+<p>蓝图的杀手锏是将你的应用组织成不同的组件。假如我们有一个微博客，我们可能需要有一个蓝图用于网站页面，比如 <em>index.html</em> 和 <em>about.html</em>。然后我们还需要一个用于在登录面板中展示最新消息的蓝图，以及另外一个用于管理员面板的蓝图。站点中每一个独立的区域也可以在代码上隔绝开来。最终你将能够把你的应用依据许多能完成单一任务的小应用组织起来。</p>
+<blockquote>
+<p><strong>参见</strong>
+从Flask文档中读到更多使用蓝图的理由
+<a href="http://flask.pocoo.org/docs/blueprints/#why-blueprints">Why Blueprints</a></p>
+</blockquote>
+<h2 id="_4">我要把它们放哪里？</h2>
+<p>就像 Flask 里的每一件事情一样，你可以使用多种方式组织应用中的蓝图。对我而言，我喜欢按照功能(functional)而非分区(divisional)来组织。(这些术语是我从商业世界借来的)</p>
+<h3 id="_5">功能式架构</h3>
+<p>在功能式架构中，按照每部分代码的功能来组织你的应用。所有模板放到同一个文件夹中，静态文件放在另一个文件夹中，而视图放在第三个文件夹中。</p>
+<pre><code>yourapp/
+    __init__.py
+    static/
+    templates/
+        home/
+        control_panel/
+        admin/
+    views/
+        __init__.py
+        home.py
+        control_panel.py
+        admin.py
+    models.py
+</code></pre>
+<p>除了 <em>yourapp/views/__init__.py</em>，在 <em>yourapp/views/</em> 文件夹中的每一个 <em>.py</em> 文件都是一个蓝图。在 <em>yourapp/__init__.py</em> 中，我们将加载这些蓝图并在我们的 <code>Flask()</code> 对象中 <strong>注册</strong> 它们。等会我们将在本章了解到这是怎么实现的。</p>
+<blockquote>
+<p><strong>参见</strong>
+当我下笔之时， flask.pocoo.org（Flask官网）就是使用这样的结构的。 <a href="https://github.com/mitsuhiko/flask/tree/website/flask_website">https://github.com/mitsuhiko/flask/tree/website/flask_website</a></p>
+</blockquote>
+<h3 id="_6">分区式架构</h3>
+<p>在分区式架构中，按照每一部分所属的蓝图来组织你的应用。管理面板的所有的模板，视图和静态文件放在一个文件夹中，用户控制面板的则放在另一个文件夹中。</p>
+<pre><code>yourapp/
+    __init__.py
+    admin/
+        __init__.py
+        views.py
+        static/
+        templates/
+    home/
+        __init__.py
+        views.py
+        static/
+        templates/
+    control_panel/
+        __init__.py
+        views.py
+        static/
+        templates/
+    models.py
+</code></pre>
+<p>在像上面列举的分区式结构，每一个 <em>yourapp/</em> 之下的文件夹都是一个独立的蓝图。所有的蓝图通过顶级的 <em>__init__.py</em> 注册到 <code>Flask()</code> 中。</p>
+<h3 id="_7">哪种更胜一筹？</h3>
+<p>选择使用哪种架构实际上是一个个人问题。两者间的唯一区别是表达层次性的方式不同 -- 你可以使用任意一种方式架构 Flask 应用 -- 所以你所需的就是选择贴近你的需求的那个。</p>
+<p>如果你的应用是由独立的，仅仅共享模型和配置的各组件组成，分区式将是个好选择。一个例子是允许用户建立网站的 SaaS 应用。你将会有独立的蓝图用于主页，控制面板，用户网站，和高亮面板。这些组件有着完全不同的静态文件和布局。如果你想要将你的蓝图提取成插件，或用之于别的项目，一个分区式架构将是正确的选择。</p>
+<p>另一方面，如果你的应用的组件之间的联系较为紧密，使用功能式架构会更好。如果 Facebook 是用 Flask 开发的，它将有一系列蓝图，用于静态页面(比如登出主页，注册页面，关于，等等)，面板(比如最新消息)，用户内容(/robert/about 和/robert/photos)，还有设置页面(/settings/security 和/settings/privacy)以及别的。这些组件都共享一个通用的布局和风格，但每一个都有它自己的布局。下面是一个非常精简的可能的 Facebook 结构，假定它用的是 Flask。</p>
+<pre><code>facebook/
+    __init__.py
+    templates/
+        layout.html
+        home/
+            layout.html
+            index.html
+            about.html
+            signup.html
+            login.html
+        dashboard/
+            layout.html
+            news_feed.html
+            welcome.html
+            find_friends.html
+        profile/
+            layout.html
+            timeline.html
+            about.html
+            photos.html
+            friends.html
+            edit.html
+        settings/
+            layout.html
+            privacy.html
+            security.html
+            general.html
+    views/
+        __init__.py
+        home.py
+        dashboard.py
+        profile.py
+        settings.py
+    static/
+        style.css
+        logo.png
+    models.py
+</code></pre>
+<p>位于 <em>facebook/view/</em> 下的蓝图更多的是视图的集合而非独立的组件。同样的静态文件将被大多数蓝图重用。大多数模板都拓展自一个主模板。一个功能式的架构是组织这个项目的好的方式。</p>
+<h2 id="_8">我该怎么使用它们？</h2>
+<h3 id="_9">基本用法</h3>
+<p>让我们看看来自 Facebook 例子的一个蓝图的代码：</p>
+<p>facebook/views/profile.py</p>
+<pre><code class="language-python">from flask import Blueprint, render_template
+
+profile = Blueprint('profile', __name__)
+
+@profile.route('/&lt;user_url_slug&gt;')
+def timeline(user_url_slug):
+    # 做些处理
+    return render_template('profile/timeline.html')
+
+@profile.route('/&lt;user_url_slug&gt;/photos')
+def photos(user_url_slug):
+    # 做些处理
+    return render_template('profile/photos.html')
+
+@profile.route('/&lt;user_url_slug&gt;/about')
+def about(user_url_slug):
+    # 做些处理
+    return render_template('profile/about.html')
+</code></pre>
+<p>要想创建一个蓝图对象，你需要 import <code>Blueprint()</code> 类并用参数 <code>name</code> 和 <code>import_name</code> 初始化。通常用 <code>__name__</code>，一个表示当前模块的特殊的 Python 变量，作为 <code>import_name</code> 的取值。</p>
+<p>假如使用分区式架构，你得告诉 Flask 某个蓝图是有着自己的模板和静态文件夹的。下面是这种情况下我们的定义大概的样子：</p>
+<pre><code>profile = Blueprint('profile', __name__,
+                    template_folder='templates',
+                    static_folder='static')
+</code></pre>
+<p>现在我们已经定义好了蓝图。是时候向 Flask app 注册它了。</p>
+<p>facebook/__init__.py</p>
+<pre><code class="language-python">from flask import Flask
+from .views.profile import profile
+
+app = Flask(__name__)
+app.register_blueprint(profile)
+</code></pre>
+<p>现在在 <em>fackbook/views/profile.py</em> 中定义的路径(比如 <code>/&lt;user_url_slug&gt;</code>)会被注册到应用中，就像是被通过 <code>@app.route()</code> 定义的。</p>
+<h3 id="url">使用一个动态的 URL 前缀</h3>
+<p>继续看 Facebook 的例子，注意到所有的个人信息路由都以 <code>&lt;user_url_slug&gt;</code> 开头并把它传递给视图函数。我们想要用户通过类似<em><a href="http://facebook.com/john.doe">http://facebook.com/john.doe</a></em> 的 URL 访问个人信息。通过给所有的蓝图的路由定义一个动态前缀，我们可以结束这种单调的重复。</p>
+<p>蓝图允许我们定义静态的或动态的前缀。举个例子，我们可以告诉 Flask 蓝图中所有的路由应该以 <em>/profile</em> 作为前缀；这样是一个静态前缀。在 Fackbook 这个例子中，前缀取决于用户浏览的是谁的个人信息。他们在 URL 对应片段中输入的文本将决定我们输出的视图；这样是一个动态前缀。</p>
+<p>我们可以选择何时定义我们的前缀。我们可以在下列两个时机中选择一个定义前缀：当我们实例化 <code>Blueprint()</code> 类的时候，或当我们在 <code>app.register_blueprint()</code> 中注册的时候。</p>
+<p>下面我们在实例化的时候设置 URL 前缀：</p>
+<p>facebook/views/profile.py</p>
+<pre><code class="language-python">from flask import Blueprint, render_template
+
+profile = Blueprint('profile', __name__, url_prefix='/&lt;user_url_slug&gt;')
+
+# [...]
+</code></pre>
+<p>下面我们在注册的时候设置 URL 前缀：</p>
+<p>facebook/__init__.py</p>
+<pre><code class="language-python">from flask import Flask
+from .views.profile import profile
+
+app = Flask(__name__)
+app.register_blueprint(profile, url_prefix='/&lt;user_url_slug&gt;')
+</code></pre>
+<p>尽管这两种方式在技术上没有区别，最好还是在注册的同时定义前缀。这使得前缀的定义可以集中到顶级目录中。因此，我推荐在注册时使用 <code>url_prefix</code>。</p>
+<p>我们可以在前缀中使用转换器(converters)，就像调用 route()一样。同样也可以使用我们定义过的任意自定义转换器。通过这样做，我们可以自动处理在蓝图前缀中传递过来的值。在这个例子中，我们将根据 URL 片段获取用户类并传递到我们的 profile 蓝图中。我们将通过一个名为 <code>url_value_preprocessor()</code> 装饰器来做到这一点。</p>
+<p>facebook/views/profile.py</p>
+<pre><code class="language-python">from flask import Blueprint, render_template, g
+
+from ..models import User
+
+# The prefix is defined in facebook/__init__.py.
+profile = Blueprint('profile', __name__)
+
+@profile.url_value_preprocessor
+def get_profile_owner(endpoint, values):
+    query = User.query.filter_by(url_slug=values.pop('user_url_slug'))
+    g.profile_owner = query.first_or_404()
+
+@profile.route('/')
+def timeline():
+    return render_template('profile/timeline.html')
+
+@profile.route('/photos')
+def photos():
+    return render_template('profile/photos.html')
+
+@profile.route('/about')
+def about():
+    return render_template('profile/about.html')
+</code></pre>
+<p>我们使用 <code>g</code> 对象来储存个人信息的拥有者，而 g 可以用于 Jinja2 模板上下文。这意味着在这个简单的例子中，我们仅仅需要渲染模板，需要的信息就能在模板中获取。</p>
+<p>facebook/templates/profile/photos.html</p>
+<pre><code>{% extends &quot;profile/layout.html&quot; %}
+
+{% for photo in g.profile_owner.photos.all() %}
+    &lt;img src=&quot;{{ photo.source_url }}&quot; alt=&quot;{{ photo.alt_text }}&quot; /&gt;
+{% endfor %}
+</code></pre>
+<blockquote>
+<p><strong>参见</strong>
+Flask文档中有一个关于如何将你的URL国际化的好教程： <a href="http://flask.pocoo.org/docs/patterns/urlprocessors/#internationalized-blueprint-urls">http://flask.pocoo.org/docs/patterns/urlprocessors/#internationalized-blueprint-urls</a> }</p>
+</blockquote>
+<h3 id="_10">使用一个动态子域名</h3>
+<p>今天，许多 SaaS 应用提供用户一个子域名来访问他们的软件。举个例子，Harvest，是一个针对顾问的日程管理软件，它在 yourname.harvestapp.com 给你提供了一个控制面板。下面我将展示在 Flask 中如何像这样自动生成一个子域名。</p>
+<p>在这一节，我将使用一个允许用户创建自己的网站的应用作为例子。假设我们的应用有三个蓝图分别针对以下的部分：用户注册的主页面，可用于建立自己的网站的用户管理面板，用户的网站。考虑到这三个部分相对独立，我们将用分区式结构组织起来。</p>
+<pre><code>sitemaker/
+    __init__.py
+    home/
+        __init__.py
+        views.py
+        templates/
+            home/
+        static/
+            home/
+    dash/
+        __init__.py
+        views.py
+        templates/
+            dash/
+        static/
+            dash/
+    site/
+        __init__.py
+        views.py
+        templates/
+            site/
+        static/
+            site/
+    models.py
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>url</th>
+<th>蓝图目录</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sitemaker.com/</td>
+<td>sitemaker/home</td>
+<td>一个普通的蓝图。包括用于<em>index.html</em>，<em>about.html</em>和<em>pricing.html</em>的视图，模板和静态文件。</td>
+</tr>
+<tr>
+<td>bigdaddy.sitemaker.com</td>
+<td>sitemaker/site</td>
+<td>这个蓝图使用了动态子域名，并包括了用户网站的一些元素。等下我们来看看用于实现这个蓝图的一些代码。</td>
+</tr>
+<tr>
+<td>bigdaddy.sitemaker.com/admin</td>
+<td>sitemaker/dash</td>
+<td>这个蓝图将使用一个动态子域名和一个URL前缀，把这一节的技术和上一节的结合起来。</td>
+</tr>
+</tbody>
+</table>
+<p>定义动态子域名的方式和定义 URL 前缀一样。同样的，我们可以选择在蓝图文件夹中，或在顶级目录的 <em>__init__.py</em> 中定义它。这一次，我们还是在 <em>sitemaker/__init__.py</em> 中放置所有的定义。</p>
+<p>sitemaker/__init__.py</p>
+<pre><code class="language-python">from flask import Flask
+from .site import site
+
+app = Flask(__name__)
+app.register_blueprint(site, subdomain='&lt;site_subdomain&gt;')
+</code></pre>
+<p>既然我们用的是分区式架构，蓝图将在 <em>sitemaker/site/__init__.py</em> 定义。</p>
+<p>sitemaker/site/__init__py</p>
+<pre><code class="language-python">from flask import Blueprint
+
+from ..models import Site
+
+# 注意首字母大写的Site和全小写的site是两个完全不同的变量。
+# Site是一个模块，而site是一个蓝图。
+
+site = Blueprint('site', __name__)
+
+@site.url_value_preprocessor
+def get_site(endpoint, values):
+    query = Site.query.filter_by(subdomain=values.pop('site_subdomain'))
+    g.site = query.first_or_404()
+
+# 在定义site后才import views。视图模块需要import 'site'，所以我们需要确保在import views之前定义site。
+from . import views
+</code></pre>
+<p>现在我们已经从数据库中获取可以向请求子域名的用户展示的站点信息了。</p>
+<p>为了使 Flask 能够支持子域名，你需要修改配置变量 <code>SERVER_NAME</code>。</p>
+<p><em>config.py</em></p>
+<pre><code class="language-python">SERVER_NAME = 'sitemaker.com'
+</code></pre>
+<blockquote>
+<p><strong>注意</strong>
+几分钟之前，当我正在打这一章的草稿时，聊天室中某人求助称他们的子域名能够在开发环境下正常工作，但在生产环境下就会失败。我问他们是否配置了<code>SERVER_NAME</code>，结果发现他们只在开发环境中配置了这个变量。在生产环境中设置这个变量解决了他们的问题。从这里可以看到我(imrobert)和 aplavin 之间的对话: <a href="http://dev.pocoo.org/irclogs/%23pocoo.2013-07-30.log">http://dev.pocoo.org/irclogs/%23pocoo.2013-07-30.log</a></p>
+<p><strong>注意</strong>
+你可以同时设置一个子域名和URL前缀。想一下使用上面的表格的URL结构，我们要怎样来配置<em>sitemaker/dash</em>。</p>
+</blockquote>
+<h2 id="_11">使用蓝图重构小型应用</h2>
+<p>我打算通过一个简单的例子来展示用蓝图重写一个应用的几个步骤。我们将从一个典型的 Flask 应用起步，然后重构它。</p>
+<pre><code>config.txt
+requirements.txt
+run.py
+gnizama/
+  __init__.py
+  views.py
+  models.py
+  templates/
+  static/
+tests/
+</code></pre>
+<p><em>views.py</em> 文件已经膨胀到 10, 000 行代码了。重构的工作被一推再推，到现在已经无路可退。这个文件包括了我们的网站的所有的视图，比如主页，用户面板，管理员面板，API 和公司博客。</p>
+<h3 id="step-1">Step 1：分区式还是功能式？</h3>
+<p>这个应用由关联较小的各部分构成。模板和静态文件不太可能在蓝图间共享，所以我们将使用分区式结构。</p>
+<h3 id="step-2">Step 2：分而治之</h3>
+<blockquote>
+<p><strong>注意</strong>
+在你对你的应用大刀阔斧之前，把一切提交到版本控制。你不会接受对任何有用的东西的意外删除。</p>
+</blockquote>
+<p>接下来我们将继续前进，为我们的新应用创建目录树。从为每一个蓝图创建一个目录开始吧。然后整体复制 <em>views.py</em>，<em>static/</em> 和 <em>templates/</em> 到每一个蓝图文件夹。接着你可以从顶级目录删除掉它们了。</p>
+<pre><code>config.txt
+requirements.txt
+run.py
+gnizama/
+  __init__.py
+  home/
+    views.py
+    static/
+    templates/
+  dash/
+    views.py
+    static/
+    templates/
+  admin/
+    views.py
+    static/
+    templates/
+  api/
+    views.py
+    static/
+    templates/
+  blog/
+    views.py
+    static/
+    templates/
+  models.py
+tests/
+</code></pre>
+<h3 id="step-3">Step 3：大扫除</h3>
+<p>现在我们可以到每一个蓝图中，移除无关的视图，静态文件和模板。你在这一阶段的处境很大程度上取决于一开始你是怎么组织你的应用的。</p>
+<p>最终结果应该是：每个蓝图有一个 <code>views.py</code> 包括了蓝图里的所有视图，没有两个蓝图对同一个路由定义了视图；每一个 <em>templates/</em> 文件夹应该只包括该蓝图所需的模板；每一个 <em>static/</em> 文件夹应该只包括该蓝图所需的静态文件。</p>
+<blockquote>
+<p><strong>注意</strong>
+趁此机会消除所有不必要的import。很容易忽略掉他们的存在，但他们会拥塞你的代码，甚至拖慢你的应用。</p>
+</blockquote>
+<h3 id="step-4">Step 4：蓝图</h3>
+<p>在这一部分我们把文件夹转换成蓝图。关键在于 <em>__init__.py</em> 文件。作为开始，让我们看一下 API 蓝图的定义。</p>
+<p><em>gnizama/api/__init__.py</em></p>
+<pre><code class="language-python">from flask import Blueprint
+
+api = Blueprint(
+    'site',
+    __name__,
+    template_folder='templates',
+    static_folder='static'
+)
+
+from . import views
+</code></pre>
+<p>接着我们可以在 gnizama 的顶级目录下的 <em>__init__.py</em> 中注册这个蓝图。</p>
+<p><em>gnizama/__init__.py</em></p>
+<pre><code class="language-python">from flask import Flask
+from .api import api
+
+app = Flask(__name__)
+
+# 在api.gnizama.com中添加API蓝图
+app.register_blueprint(api, subdomain='api')
+</code></pre>
+<p>确保路由现在是在蓝图中注册的，而不是在 app 对象。下面是在我们重构应用之前，一个在 <em>gnizama/views.py</em> 的 API 路由可能的样子。</p>
+<p><em>gnizama/views.py</em></p>
+<pre><code class="language-python">from . import app
+
+@app.route('/search', subdomain='api')
+def api_search():
+    pass
+</code></pre>
+<p>在蓝图中它看上去像这样：</p>
+<p><em>gnizama/api/views.py</em></p>
+<pre><code class="language-python">from . import api
+
+@api.route('/search')
+def search():
+    pass
+</code></pre>
+<h3 id="step-5">Step 5：大功告成</h3>
+<p>现在我们的应用已经比只有单个臃肿的 <em>views.py</em> 的时候更加模块化了。</p>
+<h2 id="_12">总结</h2>
+<ul>
+<li>一个蓝图包括了可以作为独立应用的视图，模板，静态文件和其他插件。</li>
+<li>蓝图是组织你的应用的好办法。</li>
+<li>在分区式架构下，每个蓝图对应你的应用的一个部分。</li>
+<li>在功能式架构下，每个蓝图就只是视图的集合。所有的模板和静态文件都放在一块。</li>
+<li>要使用蓝图，你需要定义它，并在应用中用 <code>Flask.register_blueprint()</code> 注册它。</li>
+<li>你可以给一个蓝图中的所有路由定义一个动态 URL 前缀。</li>
+<li>你也可以给蓝图中的所有路由定义一个动态子域名。</li>
+<li>仅需五步走，你可以用蓝图重构一个应用。</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../6-advanced_patterns_for_views_and_routing/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 关于视图和路由的进阶技巧" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              关于视图和路由的进阶技巧
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../8-templates/" class="md-footer__link md-footer__link--next" aria-label="下一页: 模板" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              模板
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

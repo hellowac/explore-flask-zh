@@ -1,0 +1,883 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>配置 - 《explore flask》中文翻译</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="《explore flask》中文翻译" class="md-header__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            《explore flask》中文翻译
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              配置
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="《explore flask》中文翻译" class="md-nav__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    《explore flask》中文翻译
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cover/" class="md-nav__link">
+        封面
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-introduction/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-coding_conventions/" class="md-nav__link">
+        代码约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-environment/" class="md-nav__link">
+        环境
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-organizing_your_project/" class="md-nav__link">
+        组织你的项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          配置
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        配置
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    从小处起步
+  </a>
+  
+    <nav class="md-nav" aria-label="从小处起步">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    一些重要的配置变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    instance 文件夹
+  </a>
+  
+    <nav class="md-nav" aria-label="instance 文件夹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instance_1" class="md-nav__link">
+    使用 instance 文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    密钥
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最小化依赖于环境的配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    依照环境变量来配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-advanced_patterns_for_views_and_routing/" class="md-nav__link">
+        关于视图和路由的进阶技巧
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-blueprints/" class="md-nav__link">
+        蓝图
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-templates/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-static_files/" class="md-nav__link">
+        静态文件
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-storing-data/" class="md-nav__link">
+        存储
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-handling_forms/" class="md-nav__link">
+        处理表单
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-handling_users/" class="md-nav__link">
+        用户管理的规范
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-deployment/" class="md-nav__link">
+        部署
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-conclusion/" class="md-nav__link">
+        结语
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    从小处起步
+  </a>
+  
+    <nav class="md-nav" aria-label="从小处起步">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    一些重要的配置变量
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instance" class="md-nav__link">
+    instance 文件夹
+  </a>
+  
+    <nav class="md-nav" aria-label="instance 文件夹">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#instance_1" class="md-nav__link">
+    使用 instance 文件夹
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    密钥
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    最小化依赖于环境的配置
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    依照环境变量来配置
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><img alt="配置" src="../images/configuration.png" /></p>
+<p>原文: <a href="http://exploreflask.com/en/latest/configuration.html">http://exploreflask.com/en/latest/configuration.html</a></p>
+<h1 id="_1">配置</h1>
+<p>当你开始学习 Flask 时，配置看上去是小菜一碟。你仅仅需要在 <em>config.py</em> 定义几个变量，然后万事大吉。
+然而当你不得不管理一个生产上的应用的配置时，这一切将变得棘手万分。
+你不得不设法保护 API 密钥，或者纠结于为了不同的环境（比如开发环境和生产环境）使用不同的配置。
+在本章我们将探讨 Flask 的一些高级特性，它们能让配置管理更为轻松。</p>
+<h2 id="_2">从小处起步</h2>
+<p>一个简单的应用不需要任何复杂的配置。你仅仅需要在你的根目录下放置一个 <em>config.py</em> 文件，并在 <em>app.py</em> 或 <em>yourapp/__init__.py</em> 中加载它。</p>
+<p><em>config.py</em> 的每一行中应该是某一个变量的赋值语句。一旦 <em>config.py</em> 在稍后被加载，这个配置变量可以通过 <code>app.config</code> 字典来获取，比如 <code>app.config["DEBUG"]</code>。
+以下是一个小项目的 <em>config.py</em> 文件的范例：</p>
+<pre><code class="language-python">DEBUG = True # 启动Flask的Debug模式
+BCRYPT_LEVEL = 13 # 配置Flask-Bcrypt拓展
+MAIL_FROM_EMAIL = &quot;robert@example.com&quot; # 设置邮件来源
+</code></pre>
+<p>有一些配置变量是内建的，比如 <code>DEBUG</code>。还有些配置变量是关于 Flask 拓展的，比如 <code>BCPYRT_LEVEL</code> 就是用于 Flask-Bcrypt 拓展（一个用于 hash 映射密码的拓展）。
+你甚至可以定义在这个应用中用到的自己的配置变量。
+在这个例子中，我使用 <code>app.config["MAIL_FROM_EMAIL"]</code> 来表示邮件往来时（比如重置密码）默认的发送方。
+这使得在将来要修改的时候不会带来太多麻烦。</p>
+<p>为了加载这些配置变量，我通常使用 <code>app.config.from_object()</code>。如果是单一模块应用中，是在 <em>app.py</em>；或者在 <em>yourapp/__init__.py</em>，如果是基于包的应用。
+无论在哪种情况下，代码看上去像这样：</p>
+<pre><code>from flask import Flask
+
+app = Flask(__name__)
+app.config.from_object('config')
+# 现在通过app.config[&quot;VAR_NAME&quot;]，我们可以访问到对应的变量
+</code></pre>
+<h3 id="_3">一些重要的配置变量</h3>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th align="center">描述</th>
+<th>默认值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DEBUG</td>
+<td align="center">在调试错误的时候给你一些有用的工具。比如当一个请求导致异常的发生时，会出现的一个web界面的调用堆栈和Python命令行。</td>
+<td>在开发环境下应该设置成True，在生产环境下应设置为False。</td>
+</tr>
+<tr>
+<td>SECRET_KEY</td>
+<td align="center">Flask使用这个密钥来对cookies和别的东西进行签名。你应该在<em>instance</em>文件夹中设定这个值，并不要把它放入版本控制中。你可以在下一节读到关于<em>instance</em>文件夹的更多信息。</td>
+<td>这应该是一个复杂的任意值。</td>
+</tr>
+<tr>
+<td>BCRYPT_LEVEL</td>
+<td align="center">如果使用Flask-Bcrypt来hash映射用户密码（如果没有，现在就用它），你需要为hash密码的算法指定“rounds”的值。设置的rounds值越高，计算一次hash花费的时间就越长（同样的效果作用于破解方，这个才是重要的）。rounds的值应该随着你的设备的计算能力的提升而增加</td>
+<td>如果使用Flask-Bcrypt来hash映射用户密码（如果没有，现在就用它），你需要为hash密码的算法指定“rounds”的值。设置的rounds值越高，计算一次hash花费的时间就越长（同样的效果作用于破解方，这个才是重要的）。rounds的值应该随着你的设备的计算能力的提升而增加</td>
+</tr>
+</tbody>
+</table>
+<p><strong>确保生产环境下已经设置了 <code>DEBUG = False</code>。如果忘记关掉，用户会很乐意对你的服务器执行任意的 Python 代码。</strong></p>
+<h2 id="instance">instance 文件夹</h2>
+<p>有时你需要定义一些不能为人所知的配置变量。为此，你会想要把它们从 <em>config.py</em> 中的其他变量分离出来，并保持在版本控制之外。
+你可能要隐藏类似数据库密码和 API 密钥的秘密，或定义特定于当前机器的参数。
+为了让这更加轻松，Flask 提供了一个叫 <em>instance 文件夹</em> 的特性。
+instance 文件夹是根目录的一个子文件夹，包括了一个特定于当前应用实例的配置文件。我们不要把它提交到版本控制中。</p>
+<p>这是一个使用了 instance 文件夹的简单 Flask 应用的结构:</p>
+<pre><code>config.py
+requirements.txt
+run.py
+instance/
+  config.py
+yourapp/
+  __init__.py
+  models.py
+  views.py
+  templates/
+  static/
+</code></pre>
+<h3 id="instance_1">使用 instance 文件夹</h3>
+<p>要想加载定义在 instance 文件夹中的配置变量，你可以使用 <code>app.config.from_pyfile()</code>。
+如果在调用 <code>Flask()</code> 创建应用时设置了 <code>instance_relative_config=True</code>，<code>app.config.from_pyfile()</code> 将查看在 <em>instance</em> 文件夹的特殊文件。</p>
+<pre><code class="language-python">app = Flask(__name__, instance_relative_config=True)
+app.config.from_object('config')
+app.config.from_pyfile('config.py')
+</code></pre>
+<p>现在，你可以在 <em>instance/config.py</em> 中定义变量，一如在 <em>config.py</em>。
+你也应该将 instance 文件夹加入到版本控制系统的忽略名单中。比如假设你用的是 git，你需要在 <em>gitignore</em> 中新开一行，写下 <code>instance/</code>。</p>
+<h3 id="_4">密钥</h3>
+<p>instance 文件夹的隐秘属性使得它成为藏匿密钥的好地方。
+你可以在放入应用的密钥或第三方的 API 密钥。假如你的应用是开源的，或者将会是开源的，这会很重要。我们希望其他人去使用他们自己申请的密钥。</p>
+<pre><code class="language-python"># instance/config.py
+
+SECRET_KEY = 'Sm9obiBTY2hyb20ga2lja3MgYXNz'
+STRIPE_API_KEY = 'SmFjb2IgS2FwbGFuLU1vc3MgaXMgYSBoZXJv'
+SQLALCHEMY_DATABASE_URI= \
+&quot;postgresql://user:TWljaGHFgiBCYXJ0b3N6a2lld2ljeiEh@localhost/databasename&quot;
+</code></pre>
+<h3 id="_5">最小化依赖于环境的配置</h3>
+<p>如果你的生产环境和开发环境之间的差别非常小，你可以使用你的 instance 文件夹抹平配置上的差别。
+在 <em>instance/config.py</em> 中定义的变量可以覆盖在 <em>config.py</em> 中设定的值。
+你只需要在 <code>app.config.from_object()</code> 之后才调用 <code>app.config.from_pyfile()</code>。
+这样做的其中一个优点是你可以在不同的机器中修改你的应用的配置。你的开发版本库可能看上去像这样:</p>
+<p>config.py</p>
+<pre><code>DEBUG = False
+SQLALCHEMY_ECHO = False
+</code></pre>
+<p>instance/config.py</p>
+<pre><code>DEBUG = True
+SQLALCHEMY_ECHO = True
+</code></pre>
+<p>然后在生产环境中，你将这些代码从 <em>instance/config.py</em> 中移除，它就会改用回 <em>config.py</em> 中设定的变量。</p>
+<blockquote>
+<p><strong>参见</strong></p>
+<ul>
+<li>在这里可以读到关于Flask-SQLAlchemy的配置密钥: <a href="http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys">http://pythonhosted.org/Flask-SQLAlchemy/config.html#configuration-keys</a></li>
+</ul>
+</blockquote>
+<h2 id="_6">依照环境变量来配置</h2>
+<p>instance 文件夹不应该在版本控制中。这意味这你将不能追踪你的 instance 配置。
+在只有一两个变量的情况下这不是什么问题，但如果你有关于多个环境（生产，稳定，开发，等等）的一大堆配置，你不会愿意冒失去它们的风险。</p>
+<p>Flask 给我们提供了根据环境变量选择一个配置文件的能力。
+这意味着我们可以在我们的版本库中有多个配置文件，并总是能根据具体环境，加载到对的那个。</p>
+<p>当我们到了有多个配置文件共存的境况，是时候把文件都移动到 <code>config</code> 包之下。
+下面是在这样的一个版本库中大致的样子:</p>
+<pre><code>requirements.txt
+run.py
+config/
+  __init__.py # 空的，只是用来告诉Python它是一个包。
+  default.py
+  production.py
+  development.py
+  staging.py
+instance/
+  config.py
+yourapp/
+  __init__.py
+  models.py
+  views.py
+  static/
+  templates/
+</code></pre>
+<p>在我们有一些不同的配置文件的情况下，可以这样设置:</p>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>config/default.py</td>
+<td>默认值，适用于所有的环境或交由具体环境进行覆盖。举个例子，在<em>config/default.py</em>中设置<code>DEBUG = False</code>，在<em>config/development.py</em>中设置<code>DEBUG = True</code>。</td>
+</tr>
+<tr>
+<td>config/development.py</td>
+<td>在开发环境中用到的值。这里你可以设定在localhost中用到的数据库URI链接。</td>
+</tr>
+<tr>
+<td>config/production.py</td>
+<td>在生产环境中用到的值。这里你可以设定数据库服务器的URI链接，而不是开发环境下的本地数据库URI链接。</td>
+</tr>
+<tr>
+<td>config/staging.py</td>
+<td>在你的开发过程中，你可能需要在一个模拟生产环境的服务器上测试你的应用。你也许会使用不一样的数据库，想要为稳定版本的应用替换掉一些配置。</td>
+</tr>
+</tbody>
+</table>
+<p>要在不同的环境中指定所需的变量，你可以调用 <code>app.config.from_envvar()</code>:</p>
+<pre><code class="language-python"># yourapp/__init__.py
+
+app = Flask(__name__, instance_relative_config=True)
+app.config.from_object('config.default')
+app.config.from_pyfile('config.py') # 从instance文件夹中加载配置
+app.config.from_envvar('APP_CONFIG_FILE')
+</code></pre>
+<p><code>app.config.from_envvar(‘APP_CONFIG_FILE’)</code> 将加载由环境变量 <code>APP_CONFIG_FILE</code> 指定的文件。这个环境变量的值应该是一个配置文件的绝对路径。</p>
+<p>这个环境变量的设定方式取决于你运行你的应用的平台。如果你是在一台标准的 Linux 服务器上运行，你可以使用一个 shell 脚本来设置环境变量并运行 <code>run.py</code>。</p>
+<p>start.sh</p>
+<pre><code>APP_CONFIG_FILE=/var/www/yourapp/config/production.py
+python run.py
+</code></pre>
+<p><em>start.sh</em> 特定于某个环境，所以它也不能放入版本控制当中。如果你把应用托管到 Heroku，你可以用 Heroku 提供的工具设置环境变量参数。对于其他 PAAS 平台也是同样的处理。</p>
+<h2 id="_7">总结</h2>
+<ul>
+<li>一个简单的应用也许仅需一个配置文件：<em>config.py</em></li>
+<li>instance 文件夹可以帮助我们隐藏不愿为人所知的配置变量。</li>
+<li>instance 文件夹可以用来改变特定环境下的程序配置。</li>
+<li>应对复杂的，基于环境的配置，我们可以结合环境变量和 <code>app.config.from_envvar()</code> 来使用。</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../4-organizing_your_project/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 组织你的项目" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              组织你的项目
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../6-advanced_patterns_for_views_and_routing/" class="md-footer__link md-footer__link--next" aria-label="下一页: 关于视图和路由的进阶技巧" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              关于视图和路由的进阶技巧
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,812 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>前言 - 《explore flask》中文翻译</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="《explore flask》中文翻译" class="md-header__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            《explore flask》中文翻译
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              前言
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="《explore flask》中文翻译" class="md-nav__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    《explore flask》中文翻译
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cover/" class="md-nav__link">
+        封面
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          前言
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        前言
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    假设
+  </a>
+  
+    <nav class="md-nav" aria-label="假设">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    受众
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    版本
+  </a>
+  
+    <nav class="md-nav" aria-label="版本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-2-python-3" class="md-nav__link">
+    Python 2 还是 Python 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flask-010" class="md-nav__link">
+    Flask 版本 0.10
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    持续集成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    本书用到的约定
+  </a>
+  
+    <nav class="md-nav" aria-label="本书用到的约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    各章独立成文
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-coding_conventions/" class="md-nav__link">
+        代码约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-environment/" class="md-nav__link">
+        环境
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-organizing_your_project/" class="md-nav__link">
+        组织你的项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-configuration/" class="md-nav__link">
+        配置
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-advanced_patterns_for_views_and_routing/" class="md-nav__link">
+        关于视图和路由的进阶技巧
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-blueprints/" class="md-nav__link">
+        蓝图
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-templates/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-static_files/" class="md-nav__link">
+        静态文件
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-storing-data/" class="md-nav__link">
+        存储
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-handling_forms/" class="md-nav__link">
+        处理表单
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-handling_users/" class="md-nav__link">
+        用户管理的规范
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-deployment/" class="md-nav__link">
+        部署
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-conclusion/" class="md-nav__link">
+        结语
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    假设
+  </a>
+  
+    <nav class="md-nav" aria-label="假设">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    受众
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    版本
+  </a>
+  
+    <nav class="md-nav" aria-label="版本">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#python-2-python-3" class="md-nav__link">
+    Python 2 还是 Python 3
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#flask-010" class="md-nav__link">
+    Flask 版本 0.10
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    持续集成
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    本书用到的约定
+  </a>
+  
+    <nav class="md-nav" aria-label="本书用到的约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    各章独立成文
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<h1 id="_1">前言</h1>
+<p>原文: <a href="http://exploreflask.com/en/latest/preface.html">http://exploreflask.com/en/latest/preface.html</a></p>
+<p>本书旨在展示使用 Flask 的最佳实践。
+开发一个普通的 Flask 应用需要跟形形色色的领域打交道。比如，你经常需要操作数据库，验证用户。
+在接下来的几页里我将尽我所能来介绍处理这些事情时的“正确之道”。
+我的建议并不总能有用，但我希望它们在大多数情况下都是一个好选择。</p>
+<h2 id="_2">假设</h2>
+<p>为了给你提供更贴切的建议，我将基于几个基本的假设撰写本书。当你阅读并在自己的项目中应用这些建议时，请勿忘这一点。</p>
+<h3 id="_3">受众</h3>
+<p>本书的内容基于官方文档之上。我强烈建议你深入阅读<a href="http://flask.pocoo.org/docs/#user-s-guide">官方用户指南</a>和<a href="http://flask.pocoo.org/docs/tutorial/">新手教程</a>。这将给你一个更熟悉 Flask 的机会。你至少需要知道什么是 view，Jinja 模板的基础知识以及新手应有的其他基本概念。我会尽量避免重提用户指南中存在的信息，所以如果直接阅读本书，你就会有对阅读官方文档的急迫需求（这不错吧？）。</p>
+<p>虽然这么说，本书涉及的主题并不高深。本书仅仅是强调减轻开发者负担的最佳实践和模式。尽量避免啰嗦官方文档中提到的内容的同时，我也会再次强调一些概念来加深印象。
+在阅读这部分内容时，你不需要重读新手教程。</p>
+<h3 id="_4">版本</h3>
+<h4 id="python-2-python-3">Python 2 还是 Python 3</h4>
+<p>当我写下此文，Python 社区正处于从 Python 2 迁移到 Python 3 的动荡之中。Python Software Foundation 的官方态度如下：</p>
+<blockquote>
+<p>Python 2.x is the status quo, Python 3.x is the present and future of the language.<a href="http://wiki.python.org/moin/Python2orPython3">Python wiki: python2还是python3</a></p>
+</blockquote>
+<p>到了版本 0.10，Flask 现在可以在 Python 3.3 上运行。就新的 Flask 应用是否需要使用 Python 3 的问题，我问过 Armin Ronacher，他回答说，这不是必须的：</p>
+<blockquote>
+<p>我自己现在并不用它，我也不会向别人推荐自己都不相信的东西，所以我不会推荐Python 3.
+-- Armin Ronacher, Flask作者<a href="https://www.youtube.com/watch?feature=player_detailpage&amp;v=fs20qdvm0K4#t=190">我和Armin Ronacher的对话</a></p>
+</blockquote>
+<p>主要的理由在于许多常用的包没有 Python 3 的版本。
+你总不会愿意接受用 Python 3 开发了几个月后发现自己不能使用包 X, Y, Z……
+也许总有一天 Flask 官方将推荐用 Python 3 开始新的项目，但是现在依然是 Python 2 的天下。</p>
+<p><strong>另注</strong></p>
+<p><a href="https://python3wos.appspot.com/">Python 3 Wall of Superpowers</a>记录了一些已经移植到 Python 3 的包。</p>
+<p>既然本书需要提供实践上的建议，我将假定你正使用 Python 2。
+更准确地说，我将基于 Python 2.7 撰写本书。随着 Flask 社区的变迁，将来的更新会改变这一点，但是在当下，我们依然活在 Python 2.7 的世界里。</p>
+<h4 id="flask-010">Flask 版本 0.10</h4>
+<p>正当本书撰写之时，0.10 是 Flask 的最新版本（准确说，是 0.10.1 版）。本书中大多数内容不会受到 Flask 的较小的变动的影响，但是你需要了解这一点。</p>
+<h2 id="_5">持续集成</h2>
+<p>本书的内容将持续更新，而不是周期性发布。
+这样做有一个好处，内容可以得到及时地更新，而不会待字闺中。
+所以这个网站内容将会比印刷版甚至 PDF 更加前沿。</p>
+<h2 id="_6">本书用到的约定</h2>
+<h3 id="_7">各章独立成文</h3>
+<p>本书的每一章独立成文。许多书和教程通篇浑然一体。通常这意味着，一个示范程序或一个应用的创建和更新将贯穿全书来展示概念和主题。
+本书的范例将散布于每一章节来展示概念，但不意味着这些范例可以组合成一个大的项目。</p>
+<h3 id="_8">格式</h3>
+<p>示例代码将以代码块形式来呈现。</p>
+<pre><code class="language-python">print “Hello world!”
+</code></pre>
+<p>目录列表有时会被用来展示一个应用或目录的大致结构。</p>
+<pre><code>static/
+  style.css
+  logo.png
+  vendor/
+    jquery.min.js
+</code></pre>
+<p>脚注会用于引用中，这样就不会跟正文混乱起来了。</p>
+<p><em>斜体</em> 将用来表示文件名。</p>
+<p><strong>粗体</strong> 将用来表示新的或重要的内容。</p>
+<blockquote>
+<p><strong>注意</strong>
+这里会有容易掉进去（而且会造成大问题）的坑。</p>
+</blockquote>
+<hr />
+<blockquote>
+<p><strong>参见</strong>
+这里会有一些补充信息。</p>
+</blockquote>
+<h2 id="_9">总结</h2>
+<ul>
+<li>本书包含了使用 Flask 的最佳实践。</li>
+<li>我假定你通读了 Flask 教程</li>
+<li>本书基于 Python 2.7</li>
+<li>本书基于 Flask 0.10</li>
+<li>通过年度审查，我尽量让本书的内容保持更新。</li>
+<li>本书中每一章独立成文。</li>
+<li>我通过一些约定来表达跟内容相关的附加信息。</li>
+<li>每章的结尾都会出现对本章内容的总结。</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../cover/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 封面" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              封面
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../2-coding_conventions/" class="md-footer__link md-footer__link--next" aria-label="下一页: 代码约定" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              代码约定
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

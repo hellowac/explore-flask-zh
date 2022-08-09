@@ -1,0 +1,841 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>处理表单 - 《explore flask》中文翻译</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="《explore flask》中文翻译" class="md-header__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            《explore flask》中文翻译
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              处理表单
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="《explore flask》中文翻译" class="md-nav__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    《explore flask》中文翻译
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cover/" class="md-nav__link">
+        封面
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-introduction/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-coding_conventions/" class="md-nav__link">
+        代码约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-environment/" class="md-nav__link">
+        环境
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-organizing_your_project/" class="md-nav__link">
+        组织你的项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-configuration/" class="md-nav__link">
+        配置
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-advanced_patterns_for_views_and_routing/" class="md-nav__link">
+        关于视图和路由的进阶技巧
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-blueprints/" class="md-nav__link">
+        蓝图
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-templates/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-static_files/" class="md-nav__link">
+        静态文件
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-storing-data/" class="md-nav__link">
+        存储
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          处理表单
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        处理表单
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#flask-wtf" class="md-nav__link">
+    Flask-WTF
+  </a>
+  
+    <nav class="md-nav" aria-label="Flask-WTF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 保护和验证
+  </a>
+  
+    <nav class="md-nav" aria-label="CSRF 保护和验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csrftoken-ajax" class="md-nav__link">
+    使用 CSRFtoken 来保护 AJAX 调用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    自定义验证函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    渲染表单
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-handling_users/" class="md-nav__link">
+        用户管理的规范
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-deployment/" class="md-nav__link">
+        部署
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-conclusion/" class="md-nav__link">
+        结语
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#flask-wtf" class="md-nav__link">
+    Flask-WTF
+  </a>
+  
+    <nav class="md-nav" aria-label="Flask-WTF">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csrf" class="md-nav__link">
+    CSRF 保护和验证
+  </a>
+  
+    <nav class="md-nav" aria-label="CSRF 保护和验证">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#csrftoken-ajax" class="md-nav__link">
+    使用 CSRFtoken 来保护 AJAX 调用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    自定义验证函数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    渲染表单
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><img alt="处理表单" src="../images/forms.png" /></p>
+<p>原文: <a href="http://exploreflask.com/en/latest/forms.html">http://exploreflask.com/en/latest/forms.html</a></p>
+<h1 id="_1">处理表单</h1>
+<p>表单是允许用户跟你的 web 应用交互的基本元素。Flask 自己不会帮你处理表单，但 Flask-WTF 插件允许用户在 Flask 应用中使用脍炙人口的 WTForms 包。这个包使得定义表单和处理表单功能变得轻松。</p>
+<h2 id="flask-wtf">Flask-WTF</h2>
+<p>你首要做的事（当然是在安装 Flask-WTF 之后），就是在 <code>myapp.forms</code> 包下定义一个表单类（form）。</p>
+<p><em>myapp/forms.py</em></p>
+<pre><code class="language-python">from flask_wtf import Form
+from wtforms import StringField, PasswordField
+from wtforms.validators import DataRequired, Email
+
+class EmailPasswordForm(Form):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+</code></pre>
+<blockquote>
+<p><strong>注意</strong>
+直到0.9版，Flask-WTF为WTForms的fields和validators提供自己的包装。你可能见过许多代码直接从<code>flask_wtforms</code>而不是<code>wtforms</code>中直接导入<code>TextField</code>，<code>PasswordField</code>等等。
+而从0.9版之后，我们得直接从<code>wtforms</code>中导入它们。</p>
+</blockquote>
+<p>这个表单将用于用户注册表单。我们可以称之为 <code>SignInForm()</code>，但是通过保持抽象，我们可以在别的地方重用它，比如作为登录表单。如果我们针对特定功能定义表单，最终就会得到许多相似却无法重用的表单。基于表单中包含的域 - 那些使得表单与众不同的元素 - 进行命名，显然会清晰很多。当然，有时候你会有复杂的，只在一个地方用到的表单，你再给它起个独一无二的名字也不迟。</p>
+<p>这个表单可以帮我们做一些事情。它可以保护我们的应用免遭 CSRF 伤害，验证用户输入，为我们定义的域渲染适当的标记。</p>
+<h3 id="csrf">CSRF 保护和验证</h3>
+<p>CSRF 全称是 cross site request forgery，跨站请求伪造。CSRF 通过第三方伪造表单数据，post 到应用服务器上。受害服务器以为这些数据来自于它自己的网站，于是大意地中招了。</p>
+<p>举个例子，假设你的邮件服务商允许你通过提交一个表单来注销账户。这个表单发送一个 POST 请求到他们服务器的 <code>account_delete</code> 页面，并且用户已经登录，就可以注销账户。你可以在你自己的网站中创建一个会发送到同一个 <code>account_delete</code> 页面的表单。现在，假如有个倒霉蛋点击了你的表单的 'submit'（或者在他们加载你的页面的时候通过 Javascript 做到这一点），同时他们又登录了邮件账号，那么他们的账户就会被注销。除非你的邮件服务商知道不能假定提交过来的请求都是来自于自己的页面。</p>
+<p>所以我们怎样判断一个 POST 请求是否来自我们自己的表单呢？WTForms 在渲染每个表单时生成一个独一无二的 token，使得这一切变得可能。那个 token 将在 POST 请求中随表单数据一起传递，并且会在表单被接受之前进行验证。关键在于 token 的值取决于储存在用户的会话（cookies）中的一个值，而且会在一定时间之后过时（默认 30 分钟）。这样只有登录了页面的人（或至少是在那个设备之后的人）才能提交一个有效的表单，而且仅仅是在登录页面 30 分钟之内才能这么做。</p>
+<blockquote>
+<p><strong>参见</strong></p>
+<ul>
+<li>
+<p>这里是关于WTForms是怎么生成token的文档: <a href="http://wtforms.simplecodes.com/docs/1.0.1/ext.html#module-wtforms.ext.csrf.session">http://wtforms.simplecodes.com/docs/1.0.1/ext.html#module-wtforms.ext.csrf.session</a></p>
+</li>
+<li>
+<p>这里有关于CSRF更多的信息: <a href="https://www.owasp.org/index.php/CSRF">https://www.owasp.org/index.php/CSRF</a></p>
+</li>
+</ul>
+</blockquote>
+<p>为了开始使用 Flask-WTF 做 CSRF 防护，我们得先给我们的登录页定义一个视图。</p>
+<p>myapp/views.py</p>
+<pre><code class="language-python">from flask import render_template, redirect, url_for
+
+from . import app
+from .forms import EmailPasswordForm
+
+@app.route('/login', methods=[&quot;GET&quot;, &quot;POST&quot;])
+def login():
+    form = EmailPasswordForm()
+    if form.validate_on_submit():
+
+        # Check the password and log the user in
+        # [...]
+
+        return redirect(url_for('index'))
+    return render_template('login.html', form=form)
+</code></pre>
+<p>我们从 <code>forms</code> 包中导入 form 对象，并于视图内实例化。然后运行 <code>form.validate_on_submit()</code>。如果表单已经 submit 了（比如通过 HTTP 方法 PUT 或 POST），这个函数返回 <code>True</code> 并且用定义在 <em>forms.py</em> 中的验证函数来验证表单。</p>
+<blockquote>
+<p><strong>参见</strong>
+<code>validate_on_submit()</code>的文档和源码在此：</p>
+<ul>
+<li><a href="http://flask-wtf.readthedocs.org/en/latest/api.html#flask_wtf.Form.validate_on_submit">http://flask-wtf.readthedocs.org/en/latest/api.html#flask_wtf.Form.validate_on_submit</a></li>
+<li><a href="https://github.com/ajford/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120">https://github.com/ajford/flask-wtf/blob/v0.8.4/flask_wtf/form.py#L120</a></li>
+</ul>
+</blockquote>
+<p>如果一个表单已经提交并且通过验证，我们可以开始处理登录逻辑的部分了。如果它还没有提交（比如，它只是一个 GET 请求），我们需要传递这个表单对象给模板来进行渲染。下面展示如何在模板中使用 CSRF 防护。</p>
+<p>myapp/templates/login.html</p>
+<pre><code>{% extends &quot;layout.html&quot; %}
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Login Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form action=&quot;{{ url_for('login') }}&quot; method=&quot;POST&quot;&gt;
+            &lt;input type=&quot;text&quot; name=&quot;email&quot; /&gt;
+            &lt;input type=&quot;password&quot; name=&quot;password&quot; /&gt;
+            {{ form.csrf_token }}
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><code>{{ form.csrf_token }}</code> 将渲染一个隐藏的包括防范 CSRF 的特殊 token 的域，而 WTForms 会在验证表单时查找这个域。我们不用操心添加的任何特殊的验证 token 正确性的逻辑。万岁！</p>
+<h4 id="csrftoken-ajax">使用 CSRFtoken 来保护 AJAX 调用</h4>
+<p>Flask-WTF 的 CSRF token 不仅限于保护表单提交。如果你的应用需要接受其他可能被伪造的请求（特别是 AJAX 调用），你也可以给它们添加 CSRF 保护！想了解更多信息，请查看 Flask-WTF 的文档：<a href="https://flask-wtf.readthedocs.org/en/latest/csrf.html#ajax">https://flask-wtf.readthedocs.org/en/latest/csrf.html#ajax</a></p>
+<h3 id="_2">自定义验证函数</h3>
+<p>除了 WTForms 提供的内置表单验证函数（比如 <code>Required()</code>，<code>Email()</code> 等等），你可以创建自己的验证函数。通过创建一个可用于检查数据库并确保用户提供的值未曾存在的 <code>Unique()</code> 验证函数，我将展示这一点。这个函数可以确保一个用户名或邮件地址未被使用。如果没有 WTForms，我们不得不在视图中完成这些检查，但现在我们可以抽象出来作为 form 类的一部分。</p>
+<p><em>myapp/forms.py</em></p>
+<pre><code class="language-python">from flask_wtf import Form
+from wtforms import StringField, PasswordField,
+from wtforms.validators import DataRequired, Email
+
+class EmailPasswordForm(Form):
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+</code></pre>
+<p>现在我们想要添加一个验证函数来确认提供的邮件地址未曾出现在数据库中。我们将把验证函数放在一个新的 <code>util</code> 模块里，即 <code>util.validators</code>。</p>
+<p><em>myapp/util/validators.py</em></p>
+<pre><code>from wtforms.validators import ValidationError
+
+class Unique(object):
+    def __init__(self, model, field, message=u'该内容已经存在。'):
+        self.model = model
+        self.field = field
+
+    def __call__(self, form, field):
+        check = self.model.query.filter(self.field == field.data).first()
+        if check:
+            raise ValidationError(self.message)
+</code></pre>
+<p>这个验证函数假定你是用 SQLAlchemy 来定义你的模型。WTForms 要求验证函数返回可调用的(callable)类型（比如一个可调用的类）。</p>
+<p>在 <em>__init__.py</em> 中，我们可以指定哪些参数应该传递给验证函数。在这个例子中我们需要检查相关的模型（比如 <code>User</code> 模型）和域。当验证函数被调用时，如果表单提交的值跟定义的模型的某个实例重复了，它会抛出一个 <code>ValidationError</code>。我们也提供一个带默认值的信息参数，作为 <code>ValidationError</code> 的一部分。</p>
+<p>现在我们给 <code>EmailPasswordForm</code> 添加 <code>Unique</code> 验证器。</p>
+<p><em>myapp/forms.py</em></p>
+<pre><code>from flask_wtf import Form
+from wtforms import StringField, PasswordField,
+from wtforms.validators import DataRequired, Email
+
+from .util.validators import Unique
+from .models import User
+
+class EmailPasswordForm(Form):
+    email = StringField('Email', validators=[DataRequired(), Email(), Unique(User, User.email, message='该邮箱已被用于注册'])
+    password = PasswordField('Password', validators=[DataRequired()])
+</code></pre>
+<blockquote>
+<p><strong>注意</strong>
+你的验证函数不一定需要是可调用的类。它也可以是一个返回可调用对象的工厂类或者可调用对象。看这里的一些例子：
+<a href="http://wtforms.simplecodes.com/docs/0.6.2/validators.html#custom-validators">http://wtforms.simplecodes.com/docs/0.6.2/validators.html#custom-validators</a></p>
+</blockquote>
+<h3 id="_3">渲染表单</h3>
+<p>WTForms 也可以帮助我们给我们只需要表单渲染 HTML。WTForms 实现的 <code>Field</code> 类能根据域的形式渲染对应的 HTML，所以我们只需要在模板中调用它们。就像是渲染 <code>csrf_token</code> 域一样。下面是当我们使用 WTForms 来渲染我们的其他域时，login 模板大概的样子。</p>
+<p>myapp/templates/login.html</p>
+<pre><code>{% extends &quot;layout.html&quot; %}
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Login Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;form action=&quot;&quot; method=&quot;POST&quot;&gt;
+            {{ form.email }}
+            {{ form.password }}
+            {{ form.csrf_token }}
+        &lt;/form&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>通过传递域的性质(properties)作为调用域的参数，我们可以自定义域的渲染形式。下面我们添加一个 <code>placeholder=</code> 性质给 email 域：</p>
+<pre><code>&lt;form action=&quot;&quot; method=&quot;POST&quot;&gt;
+    {{ form.email.label }}: {{ form.email(placeholder='yourname@email.com') }}&lt;br&gt;
+    {{ form.password.label }}: {{ form.password }}&lt;br&gt;
+    {{ form.csrf_token }}
+&lt;/form&gt;
+</code></pre>
+<blockquote>
+<p><strong>注意</strong>
+如果我们想要传递HTML属性“class”， 我们得使用<code>class_=''</code>，因为“class”是Python的保留关键字。</p>
+<p><strong>参见</strong>
+这个文档列出了所有可用的域性质：
+<a href="http://wtforms.simplecodes.com/docs/1.0.4/fields.html#wtforms.fields.Field.name">http://wtforms.simplecodes.com/docs/1.0.4/fields.html#wtforms.fields.Field.name</a></p>
+<p><strong>注意</strong>
+你大概注意到了我们不需要使用Jinja的<code>|safe</code>过滤器。这是因为WTForms自己会处理掉HTML转义的问题。在这里了解更多信息：
+<a href="http://pythonhosted.org/Flask-WTF/#using-the-safe-filter">http://pythonhosted.org/Flask-WTF/#using-the-safe-filter</a></p>
+</blockquote>
+<h2 id="_4">总结</h2>
+<ul>
+<li>表单可能会是安全上的阿喀琉斯之踵。</li>
+<li>WTForms（以及 Flask-WTF）使得定义，保护和渲染你的表单更加轻松。</li>
+<li>使用 Flask-WTF 提供的 CSRF 防范来保护你的表单。</li>
+<li>你也可以使用 Flask-WTF 来防止 AJAX 调用遭到 CSRF 攻击。</li>
+<li>定义自定义的表单验证函数，避免在视图函数中写入验证逻辑。</li>
+<li>使用 WTForms 的域渲染功能来渲染你的表单的 HTML，这样每次修改表单的定义时，你不需要更新模板。</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../10-storing-data/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 存储" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              存储
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../12-handling_users/" class="md-footer__link md-footer__link--next" aria-label="下一页: 用户管理的规范" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              用户管理的规范
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>

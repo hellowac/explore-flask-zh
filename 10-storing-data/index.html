@@ -1,0 +1,730 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.3.9">
+    
+    
+      
+        <title>存储 - 《explore flask》中文翻译</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.1d29e8d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="《explore flask》中文翻译" class="md-header__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            《explore flask》中文翻译
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              存储
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="《explore flask》中文翻译" class="md-nav__button md-logo" aria-label="《explore flask》中文翻译" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    《explore flask》中文翻译
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        README
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cover/" class="md-nav__link">
+        封面
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1-introduction/" class="md-nav__link">
+        前言
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2-coding_conventions/" class="md-nav__link">
+        代码约定
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3-environment/" class="md-nav__link">
+        环境
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4-organizing_your_project/" class="md-nav__link">
+        组织你的项目
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5-configuration/" class="md-nav__link">
+        配置
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6-advanced_patterns_for_views_and_routing/" class="md-nav__link">
+        关于视图和路由的进阶技巧
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../7-blueprints/" class="md-nav__link">
+        蓝图
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../8-templates/" class="md-nav__link">
+        模板
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../9-static_files/" class="md-nav__link">
+        静态文件
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          存储
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        存储
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sqlalchemy" class="md-nav__link">
+    SQLAlchemy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    初始化数据库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alembic" class="md-nav__link">
+    Alembic 迁移工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../11-handling_forms/" class="md-nav__link">
+        处理表单
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../12-handling_users/" class="md-nav__link">
+        用户管理的规范
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../13-deployment/" class="md-nav__link">
+        部署
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../14-conclusion/" class="md-nav__link">
+        结语
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sqlalchemy" class="md-nav__link">
+    SQLAlchemy
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    初始化数据库
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#alembic" class="md-nav__link">
+    Alembic 迁移工具
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    总结
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+
+
+<p><img alt="存储" src="../images/storing.png" /></p>
+<p>原文: <a href="http://exploreflask.com/en/latest/storing.html">http://exploreflask.com/en/latest/storing.html</a></p>
+<h1 id="_1">存储</h1>
+<p>大多数 Flask 应用都将要跟数据打交道。有很多种不同的方法存储数据。至于哪种最优，取决于数据的类型。如果你储存的是关系性数据（比如一个用户有多个邮件，一个邮件对应一个用户），关系型数据库无疑是你的选择。其他类型的数据也许适合储存到 NoSQL 数据库（比如 MongoDB）中。</p>
+<p>我不会告诉你如何为你的应用选择数据库。如果有人告诉你，NoSQL 是你的唯一选择；那么必然也会有人建议用关系型数据库处理同样的问题。对此我唯一需要说的是，如果你不清楚，关系型数据库（MySQL, PostgreSQL 等等）将满足你绝大部分的需求。</p>
+<p>另外，当你使用关系型数据库，你就能用到 SQLAlchemy，而 SQLAlchemy 用起来真爽。</p>
+<h2 id="sqlalchemy">SQLAlchemy</h2>
+<p>SQLAlchemy 是一个 ORM（<a href="http://zh.wikipedia.org/wiki/%E5%AF%B9%E8%B1%A1%E5%85%B3%E7%B3%BB%E6%98%A0%E5%B0%84">对象关系映射</a>）。基于对目标数据库的原生 SQL 的抽象，它提供了与一长串数据库引擎的一致的 API。这一列表中包括 MySQL，PostgreSQL，和 SQLite。这使得在你的模型和数据库间交换数据变得轻松愉快，同时也使得诸如换掉数据库引擎和迁移数据库模式等其他事情变得没那么繁琐。</p>
+<p>存在一个很棒的 Flask 插件使得在 Flask 中使用 SQLAlchemy 更为轻松。它就是 Flask-SQLAlchemy。Flask-SQLAlchemy 为 SQLAlchemy 设置了许多合理的配置。它也内置了一些 session 管理，这样你就不用在应用代码里处理这种基础事务了。</p>
+<p>让我们深入看看一些代码。我们将先定义一些模型，接着配置下 SQLAchemy。这些模型将位于 <em>myapp/models.py</em>，不过首先我们要在 <em>myapp/__init__.py</em> 定义我们的数据库。</p>
+<p><em>myapp/__init__.py_</em></p>
+<pre><code>from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__, instance_relative_config=True)
+
+app.config.from_object('config')
+app.config.from_pyfile('config.py')
+
+db = SQLAlchemy(app)
+</code></pre>
+<p>我们首先初始化并配置你的 Flask 应用，然后用它来初始化你的 SQLAlchemy 数据库处理程序。我们将为数据库配置使用一个 instance 文件夹，所以我们应该在初始化应用时加上 <code>instance_relative_config</code> 选项，然后调用 <code>app.config.from_pyfile</code>。现在我们可以定义模型了。</p>
+<p><em>myapp/models.py</em></p>
+<pre><code>from . import db
+
+class Engine(db.Model):
+
+    # Columns
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    title = db.Column(db.String(128))
+
+    thrust = db.Column(db.Integer, default=0)
+</code></pre>
+<p><code>Column</code>，<code>Integer</code>，<code>String</code>，<code>Model</code> 和其他的 SQLAlchemy 类都可以通过由 Flask-SQLAlchemy 构造的 <code>db</code> 对象访问。我们会定义一个储存我们的太空飞船引擎的当前状态的模型。每个引擎有一个 ID，一个标题和一个推力等级。</p>
+<p>我们需要往我们的配置添加一些数据库信息。我们打算使用一个 instance 文件夹来避免配置变量被记录进版本控制系统，所以我们要把它们放入 <em>instance/config.py</em>。</p>
+<p><em>instance/config.py</em></p>
+<pre><code>SQLALCHEMY_DATABASE_URI = &quot;postgresql://user:password@localhost/spaceshipDB&quot;
+</code></pre>
+<blockquote>
+<p><strong>注意</strong>
+你的数据库URI将取决于你选择的数据库和它部署的位置。看一下这个相关的SQLAlchemy文档：
+<a href="http://docs.sqlalchemy.org/en/latest/core/engines.html?highlight=database#database-urls">http://docs.sqlalchemy.org/en/latest/core/engines.html?highlight=database#database-urls</a></p>
+</blockquote>
+<h2 id="_2">初始化数据库</h2>
+<p>既然数据库已经配置好了，而模型也定义了，是时候初始化数据库了。这个步骤从由模型定义中创建数据库模式开始。</p>
+<p>通常这会是非常痛苦的过程。不过幸运的是，SQLAlchemy 提供了一个十分酷的工具帮我们完成了所有的琐事。</p>
+<p>让我们在版本库的根目录下打开一个 Python 终端。</p>
+<pre><code>$ pwd
+/Users/me/Code/myapp
+$ workon myapp
+(myapp)$ python
+Python 2.7.5 (default, Aug 25 2013, 00:04:04)
+[GCC 4.2.1 Compatible Apple LLVM 5.0 (clang-500.0.68)] on darwin
+Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+&gt;&gt;&gt; from myapp import db
+&gt;&gt;&gt; db.create_all()
+&gt;&gt;&gt;
+</code></pre>
+<p>现在，感谢 SQLAlchemy，你会发现在你配置的数据库中，所需的表格已经被创建出来了。</p>
+<h2 id="alembic">Alembic 迁移工具</h2>
+<p>数据库的模式并非亘古不变的。举个例子，你可能需要在引擎的表里添加一个 <code>last_fired</code> 的项。如果这个表是一张白纸，你只需要更新模型并重新运行 <code>db.create_all()</code>。然而，如果你在引擎表里记录了六个月的数据，你肯定不会想要从头开始。这时候就需要数据库迁移工具了。</p>
+<p>Alembic 是专用于 SQLAlchemy 的数据库迁移工具。它允许你保持你的数据库模式的版本历史，这样你就可以升级到一个新的模式，或者降级到旧的模式。</p>
+<p>Alembic 有一个可拓展的新手教程，所以我只会大概地说一下并指出一些需要注意的事项。</p>
+<p>通过一个初始化的 <code>alembic init</code> 命令，你将创建一个 alembic "迁移环境"。在你的版本库的根目录下执行这个命令，你将得到一个叫 <code>alembic</code> 的新文件夹。你的版本库将看上去就像 Alembic 教程中的这个例子一样：</p>
+<pre><code>myapp/
+ alembic.ini
+    alembic/
+        env.py
+        README
+        script.py.mako
+        versions/
+            3512b954651e_add_account.py
+            2b1ae634e5cd_add_order_id.py
+            3adcc9a56557_rename_username_field.py
+    myapp/
+     __init__.py
+        views.py
+        models.py
+       templates/
+    run.py
+    config.py
+    requirements.txt
+
+</code></pre>
+<p><em>alembic/</em> 文件夹中包括了在版本间迁移数据的脚本。同时会有一个包括配置信息的 <em>alembic.ini</em> 文件。</p>
+<blockquote>
+<p><strong>注意</strong>
+把<em>alembic.ini</em>添加到<em>.gitignore</em>中！在那里会有你的数据库凭证，所以你<em>不应该</em>把它留在版本控制中。</p>
+<p>不过你可以把<em>alembic/</em>放进版本控制。它不会包含敏感信息（而且不能从你的源代码中重新生成），并且在版本控制中保存多个副本可以避免你的电脑发生不测。</p>
+</blockquote>
+<p>当数据库模式需要发生变化时，我们需要做一系列事情。首先，运行 <code>alembic revision</code> 来生成迁移脚本。在 <em>myapp/alembic/versions/</em> 打开新生成的 Python 文件并使用 Alembic 的 <code>op</code> 对象完成 <code>upgrade</code> 和 <code>downgrade</code> 函数。</p>
+<p>一旦我们的迁移脚本已经准备就绪，我们只需运行 <code>alembic upgrade head</code> 来迁移我们的数据到最新版本。</p>
+<blockquote>
+<p><strong>参见</strong>
+想知道更多关于配置Alembic，创建你的迁移脚本和运行你的迁移，请看Alembic教程：
+<a href="http://alembic.readthedocs.org/en/latest/tutorial.html">http://alembic.readthedocs.org/en/latest/tutorial.html</a></p>
+<p><strong>注意</strong>
+不要忘记设定数据的备份计划。备份计划的话题已经超出本书的范围，但你应该总是要有一个安全和健壮的方式备份你的数据库。</p>
+<p><strong>注意</strong>
+Flask在NoSQL上的支持较少，但只要有你选择的数据库引擎有对应的Python库，你就能够用上它。这里有一些Flask插件，可以给Flask提供NoSQL引擎的支持。
+<a href="http://flask.pocoo.org/extensions/">http://flask.pocoo.org/extensions/</a></p>
+</blockquote>
+<h2 id="_3">总结</h2>
+<ul>
+<li>使用 SQLAchemy 来搭配关系型数据库。</li>
+<li>使用 Flask-SQLAlchemy 来包装 SQLAlchemy。</li>
+<li>Alembic 会在数据库模式改变时帮助你管理数据迁移。</li>
+<li>你可以用 NoSQL 搭配 Flask，但具体做法取决于具体引擎。</li>
+<li>记得备份你的数据！</li>
+</ul>
+
+              
+            </article>
+            
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="页脚" >
+      
+        
+        <a href="../9-static_files/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 静态文件" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              静态文件
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../11-handling_forms/" class="md-footer__link md-footer__link--next" aria-label="下一页: 处理表单" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              处理表单
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b97dbffb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\uff0c\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.6c7ad80a.min.js"></script>
+      
+    
+  </body>
+</html>
